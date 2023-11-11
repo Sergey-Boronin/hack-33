@@ -46,42 +46,52 @@ function showNextIcon(difficulty) {
 
   iconElement.style.left = Math.random() * (gameBoard.clientWidth - 50) + 'px';
   iconElement.style.top = Math.random() * (gameBoard.clientHeight - 50) + 'px';
-
+  let animation_timer;
+  //сложность: движение
   if (difficulty === 2) {
-      iconElement.classList.add('move-icon');
+      //iconElement.classList.add('move-icon');
+      animation_timer = setTimeout(()=>moveIcon(iconElement), 500);   
+      //moveIcon(iconElement);
   }
+
+  let hide_elem = setTimeout(() => {
+    
+    iconElement.style.display = 'none';
+    showNextIcon(difficulty);
+    
+  }, 3000);
 
   iconElement.addEventListener('click', () => {
       score += 5;
-      iconElement.style.display = 'none';
+      iconElement.style.display = 'none'; 
+      clearTimeout(hide_elem);
+      //clearTimeout(animation_timer);
       showNextIcon(difficulty);
       updateScore();
   });
 
   gameBoard.appendChild(iconElement);
 
-  setTimeout(() => {
-      iconElement.style.display = 'none';
-      showNextIcon(difficulty);
-  }, 3000);
+
 }
 
 function moveIcon(iconElement) {
   const gameBoard = document.getElementById('game-board');
   const maxX = gameBoard.clientWidth - 50;
   const maxY = gameBoard.clientHeight - 50;
-
-  function move() {
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-
-      iconElement.style.left = x + 'px';
-      iconElement.style.top = y + 'px';
-
-      requestAnimationFrame(move);
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+  
+  function move(){
+    iconElement.style.left = x + 'px';
+    iconElement.style.top = y + 'px';
+    requestAnimationFrame(move);
+   
   }
 
   move();
+  
+  
 }
 
 function endGame() {
@@ -110,3 +120,8 @@ function updateScore() {
 document.addEventListener('DOMContentLoaded', () => {
   startGame();
 });
+
+//проблемы
+
+//выходит анимация за пределы блока
+//в разные стороны менялось движение
