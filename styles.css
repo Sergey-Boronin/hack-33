@@ -27,7 +27,7 @@ body {
   font-size: 18px;
   color: #fff;
   border-radius: 50%;
-  transition: 3s;
+  transition:2s;
 }
 
 #result {
