@@ -27,6 +27,7 @@ body {
   font-size: 18px;
   color: #fff;
   border-radius: 50%;
+  transition: 3s;
 }
 
 #result {
@@ -69,7 +70,8 @@ body {
 
 /* Стили для движения иконок в сложном уровне */
 .icon.move-icon {
-  animation: moveAnimation 8s steps(40) infinite;
+  animation: moveAnimation 3s steps(40) infinite;
+  
 }
 
 @keyframes moveAnimation {
@@ -78,6 +80,6 @@ body {
   }
 
   100% {
-    transform: translate(200px, 0);
+    transform: translate(200px, 200px);
   }
 }
