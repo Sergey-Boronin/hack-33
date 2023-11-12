@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./styles.css">
-  
+
 </head>
 
 <body>
@@ -26,36 +26,38 @@
       </div>
       <div class="right">
         <p>
-          <b>Правила игры.</b><br>
+          Правила игры.<br>
+
           Выбрать уровень игры.<br>
           Наводи мышку на страхи<br> Порази их щелкая левой кнопкой мышки.
         </p>
       </div>
-      
+
       <h1>Выбери сложность</h1>
 
       <div class="change">
         <button onclick="startGame(1)" class="lite">Легкий уровень</button>
         <button onclick="startGame(2)" class="hard">Сложный уровень</button>
       </div>
-      
-      <div class="level">
-          <label>Без времени <input class="checkbox_notimer" type="checkbox" /></label>
 
-          <br/>
-          <label>До 3-х промахов <input class="checkbox_misses" type="checkbox" /></label>
+      <div class="level">
+        <label>Без времени <input class="checkbox_notimer" type="checkbox" /></label>
+
+        <br />
+        <label>До 3-х промахов <input class="checkbox_misses" type="checkbox" /></label>
       </div>
 
       <div class="bottom">
         <button class="start">Начало игры</button>
       </div>
-      
+
     </section>
 
     <section class="board">
-      <div id="game-board">
-        <button class="back">Назад в меню</button>
-      </div>
+      <button id="back-button">
+        Назад в меню
+      </button>
+      <div id="game-board"></div>
       <div id="result">
         <button>Начать заново</button>
       </div>

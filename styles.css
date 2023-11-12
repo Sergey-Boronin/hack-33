@@ -5,6 +5,7 @@ body {
   height: 100vh;
   margin: 0;
   background-color: #f0f0f0;
+  font-family: Arial;
 }
 
 .menu {
@@ -125,12 +126,11 @@ h1 {
 }
 
 .icon {
-  display: none;
+
   position: absolute;
   width: 124px;
   height: 124px;
   background-color: #3498db;
-  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -138,71 +138,8 @@ h1 {
   color: #fff;
   border-radius: 50%;
   transition: 2s;
+  background-size: 100% 100%;
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.6);
-}
-
-.result1 {
-  display: none;
-  align-items: center;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ea7474;
-  border-radius: 5px;
-
-  button {
-    display: none;
-
-    background-color: #ea7474;
-    border-radius: 5px;
-  }
-
-}
-
-.result2 {
-  display: none;
-  /*display: flex;*/
-  align-items: center;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ea7474;
-  border-radius: 5px;
-
-  button {
-
-    background-color: #ea7474;
-    border-radius: 5px;
-  }
-}
-
-.result3 {
-  display: none;
-  /*display: flex;*/
-  align-items: center;
-  flex-direction: column;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ea7474;
-  border-radius: 5px;
-
-  button {
-
-    background-color: #ea7474;
-    border-radius: 5px;
-  }
 }
 
 
@@ -227,6 +164,18 @@ h1 {
   font-size: 18px;
 }
 
+#back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 18px;
+  z-index: 100;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
 #timer,
 #score {
   margin-bottom: 10px;
@@ -246,7 +195,7 @@ h1 {
 }
 
 .icon.hide-icon {
-  animation: hideAnimation 0.5s linear;
+  animation: hideAnimation 1s linear;
   animation-fill-mode: forwards;
 }
 
@@ -255,10 +204,11 @@ h1 {
   position: absolute;
   top: -30px;
   color: black;
-  font-size: 24px;
-  width: 100px;
-  background-color: red;
+  font-size: 34px;
+  background-color: #3498db;
+
   text-align: center;
+
 }
 
 @keyframes hideAnimation {
@@ -285,4 +235,9 @@ h1 {
     justify-content: space-around;
     align-items: center;
   }
+}
+
+.blured {
+  filter: blur(4px);
+  transition: 2s ease;
 }
