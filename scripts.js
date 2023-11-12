@@ -1,14 +1,14 @@
 const icons = [
-  { id: 1, name: 'Icon 1', imgUrl: 'path/to/icon1.png' },
-  { id: 2, name: 'Icon 2', imgUrl: 'path/to/icon2.png' },
-  { id: 3, name: 'Icon 3', imgUrl: 'path/to/icon3.png' },
-  { id: 4, name: 'Icon 4', imgUrl: 'path/to/icon4.png' },
-  { id: 5, name: 'Icon 5', imgUrl: 'path/to/icon5.png' },
-  { id: 6, name: 'Icon 6', imgUrl: 'path/to/icon6.png' },
-  { id: 7, name: 'Icon 7', imgUrl: 'path/to/icon7.png' },
-  { id: 8, name: 'Icon 8', imgUrl: 'path/to/icon8.png' },
-  { id: 9, name: 'Icon 9', imgUrl: 'path/to/icon9.png' },
-  { id: 10, name: 'Icon 10', imgUrl: 'path/to/icon10.png' },
+  { id: 1, name: 'loneliness', imgUrl: '/img/loneliness.png'},
+  { id: 2, name: 'fist', imgUrl: '/img/fist.jpg'},
+  { id: 3, name: 'application', imgUrl: '/img/application.jpg'},
+  { id: 4, name: 'doc', imgUrl: '/img/doc.jpg'},
+  { id: 5, name: 'newplaces', imgUrl: '/img/newplaces.jpg'},
+  { id: 6, name: 'woman_walks', imgUrl: '/img/woman_walks_out_the_door.jpg'},
+  { id: 7, name: 'dark', imgUrl: '/img/darkness.jpg'},
+  { id: 8, name: 'alone', imgUrl: '/img/alone.png'},
+  //{ id: 9, name: 'Icon 9', imgUrl: 'path/to/icon9.png' },
+  //{ id: 10, name: 'Icon 10', imgUrl: 'path/to/icon10.png' },
 ];
 
 let score = 0;
@@ -40,9 +40,10 @@ function showNextIcon(difficulty) {
   const randomIndex = Math.floor(Math.random() * icons.length);
   const icon = icons[randomIndex];
 
-  const iconElement = document.createElement('div');
+  const iconElement = document.createElement('img');
+  iconElement.src=icon.imgUrl;
   iconElement.classList.add('icon');
-  iconElement.innerText = icon.name;
+  //iconElement.innerText = icon.name;
 
   iconElement.style.left = Math.random() * (gameBoard.clientWidth - 50) + 'px';
   iconElement.style.top = Math.random() * (gameBoard.clientHeight - 50) + 'px';
