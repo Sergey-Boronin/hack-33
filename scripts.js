@@ -11,87 +11,111 @@ const icons = [
   { id: 10, name: 'Icon 10', imgUrl: 'path/to/icon10.png' },
 ];
 
+const checkbox_notimer = document.querySelector(".checkbox_notimer");
+const checkbox_misses = document.querySelector(".checkbox_misses");
+const gameBoard = document.getElementById('game-board');
+const timer_elem = document.getElementById('timer');
+
 let score = 0;
 let timer;
-let gameTime = 60;
+let gameTime = 10;
 let isIconClicked = false;
+let misses = false;
+let notime = false;
+let count_misses = 0;
+
+checkbox_misses.addEventListener("change", ()=>{
+  misses = checkbox_misses.checked; 
+})
+
+checkbox_notimer.addEventListener("change", ()=>{
+  notime = checkbox_notimer.checked; 
+  if(notime){
+    timer_elem.style.display = "none";
+  }else{
+    timer_elem.style.display = "block";
+  }
+  
+})
+
+gameBoard.addEventListener("click", function(){
+    if(misses){
+      count_misses++;
+    }
+
+    if(count_misses == 3){
+      endGame();
+    }
+})
 
 function startGame(difficulty) {
-  // document.getElementById('difficulty-select').style.display = 'none';
-
   score = 0;
-  gameTime = 60;
+  gameTime = 10;
   isIconClicked = false;
   showNextIcon(difficulty);
   updateTimer();
-  timer = setInterval(() => {
-      gameTime--;
-      updateTimer();
-      if (gameTime <= 0) {
-          endGame();
-      }
-  }, 1000);
+  if(!notime){
+    timer = setInterval(() => {
+        gameTime--;
+        updateTimer();
+        if (gameTime <= 0) {
+            endGame();
+        }
+    }, 1000);
+  }
+
+  
 }
 
 function showNextIcon(difficulty) {
-  const gameBoard = document.getElementById('game-board');
+  
   gameBoard.innerHTML = '';
 
   const randomIndex = Math.floor(Math.random() * icons.length);
   const icon = icons[randomIndex];
 
-  const iconElement = document.createElement('div');
+  let iconElement = document.createElement('div');
   iconElement.classList.add('icon');
+  gameBoard.appendChild(iconElement);
   iconElement.innerText = icon.name;
 
   iconElement.style.left = Math.random() * (gameBoard.clientWidth - 50) + 'px';
   iconElement.style.top = Math.random() * (gameBoard.clientHeight - 50) + 'px';
+  
   let animation_timer;
+  
   //сложность: движение
   if (difficulty === 2) {
-      //iconElement.classList.add('move-icon');
-      animation_timer = setTimeout(()=>moveIcon(iconElement), 500);   
-      //moveIcon(iconElement);
+      animation_timer = setTimeout(()=>moveIcon(iconElement), 500);  
   }
 
   let hide_elem = setTimeout(() => {
-    
     iconElement.style.display = 'none';
     showNextIcon(difficulty);
-    
+    clearTimeout(animation_timer);
   }, 3000);
 
-  iconElement.addEventListener('click', () => {
+  iconElement.addEventListener('click', (e) => {
+      e.stopPropagation();
       score += 5;
       iconElement.style.display = 'none'; 
       clearTimeout(hide_elem);
-      //clearTimeout(animation_timer);
+      clearTimeout(animation_timer);
       showNextIcon(difficulty);
       updateScore();
   });
 
-  gameBoard.appendChild(iconElement);
-
-
 }
 
-function moveIcon(iconElement) {
+function moveIcon(icon) {
   const gameBoard = document.getElementById('game-board');
   const maxX = gameBoard.clientWidth - 50;
   const maxY = gameBoard.clientHeight - 50;
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
-  
-  function move(){
-    iconElement.style.left = x + 'px';
-    iconElement.style.top = y + 'px';
-    requestAnimationFrame(move);
-   
-  }
 
-  move();
-  
-  
+  icon.style.left = x + 'px';
+  icon.style.top = y + 'px';
 }
 
 function endGame() {
@@ -100,8 +124,8 @@ function endGame() {
   const resultElement = document.getElementById('result');
   resultElement.innerHTML = `<p>Ваш счет: ${score}</p>`;
 
-  if (score > 50) {
-      resultElement.innerHTML += '<p>Поздравляем! Вы набрали больше 50 очков!</p>';
+  if (score > 30) {
+      resultElement.innerHTML += '<p>Поздравляем! Вы набрали больше 10 очков!</p>';
   } else {
       resultElement.innerHTML += '<p>Попробуйте еще раз!</p>';
   }
@@ -110,18 +134,16 @@ function endGame() {
 }
 
 function updateTimer() {
-  document.getElementById('timer').innerText = `Время: ${gameTime}`;
+  timer_elem.innerText = `Время: ${gameTime}`;
 }
 
 function updateScore() {
   document.getElementById('score').innerText = `Очки: ${score}`;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  startGame();
-});
 
-//проблемы
+//задачи
 
-//выходит анимация за пределы блока
-//в разные стороны менялось движение
+//disable checkbox 
+//выходит анимация за пределы блока +
+//в разные стороны менялось движение +
