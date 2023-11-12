@@ -7,8 +7,6 @@ const icons = [
   { id: 6, name: 'Мама исчезнет', imgUrl: 'img/woman_walks_out_the_door.jpg'},
   { id: 7, name: 'Темнота', imgUrl: 'img/darkness.jpg'},
   { id: 8, name: 'Предательство', imgUrl: 'img/alone.png'},
-  //{ id: 9, name: 'Icon 9', imgUrl: 'path/to/icon9.png' },
-  //{ id: 10, name: 'Icon 10', imgUrl: 'path/to/icon10.png' },
 ];
 
 const checkbox_notimer = document.querySelector(".checkbox_notimer");
@@ -46,7 +44,6 @@ gameBoard.addEventListener("click", function(){
     if(misses){
       count_misses++;
     }
-
     if(count_misses == 3){
       endGame();
     }
@@ -74,18 +71,13 @@ function startGame(difficulty) {
 }
 
 function showNextIcon(difficulty) {
-  
   gameBoard.innerHTML = '';
-
   randomIndex = Math.floor(Math.random() * icons.length);
   const icon = icons[randomIndex];
-
   let iconElement = document.createElement('div');
   iconElement.classList.add('icon');
   iconElement.style.backgroundImage = "url("+icon.imgUrl+")";
   gameBoard.appendChild(iconElement);
-  // iconElement.innerText = icon.name;
-  
 
   iconElement.style.left = Math.random() * (gameBoard.clientWidth -160) + 'px';
   iconElement.style.top = Math.random() * (gameBoard.clientHeight -160) + 'px';
@@ -99,14 +91,15 @@ function showNextIcon(difficulty) {
 
   let hide_elem = setTimeout(() => {
     iconElement.style.display = 'none';
-    showNextIcon(difficulty);
+    if (gameTime != 0) {
+      showNextIcon(difficulty);
+  }
     clearTimeout(animation_timer);
   }, 3500);
 
   iconElement.addEventListener('click', (e) => {
       e.stopPropagation();
       score += 5;
-      //iconElement.style.display = 'none'; 
       clearTimeout(hide_elem);
       clearTimeout(animation_timer);
       iconElement.classList.add('hide-icon');
@@ -114,7 +107,6 @@ function showNextIcon(difficulty) {
       setTimeout(()=>showNextIcon(difficulty), 500)
       updateScore();
   });
-
 }
 
 function moveIcon(icon) {
@@ -123,15 +115,12 @@ function moveIcon(icon) {
   const maxY = gameBoard.clientHeight - 50;
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
-
   icon.style.left = x + 'px';
   icon.style.top = y + 'px';
 }
 
 function endGame() {
   clearInterval(timer);
-
-
   resultElement.innerHTML = `<p>Ваш счет: ${score}</p>`;
 
   if (score > 30) {
@@ -150,10 +139,3 @@ function updateTimer() {
 function updateScore() {
   document.getElementById('score').innerText = `Очки: ${score}`;
 }
-
-
-//задачи
-
-//disable checkbox 
-//выходит анимация за пределы блока +
-//в разные стороны менялось движение +
