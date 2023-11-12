@@ -33,7 +33,10 @@ p {
   margin: 10px;
 
 }
-
+.img{
+  display: flex;
+  justify-content: space-between;
+}
 img {
   width: 30px;
 }
@@ -96,6 +99,14 @@ h1 {
 .board {
   height: 100vh;
   width: 100vw;
+}
+.back{
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #1a0606;
+  border-radius: 12px;
 }
 
 #game-board {
