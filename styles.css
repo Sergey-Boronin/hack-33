@@ -7,6 +7,91 @@ body {
   background-color: #f0f0f0;
 }
 
+.menu {
+  background-color: rgb(249, 234, 220);
+  padding: 10px;
+}
+
+.board{
+  display: none;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  text-align: center;
+  margin: 10px;
+}
+
+.fear {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+
+}
+
+img {
+  width: 30px;
+}
+
+h1 {
+  text-align: center;
+  color: rgb(34, 29, 27);
+}
+
+.change {
+  display: flex;
+  justify-content: space-around;
+}
+
+.level {
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+
+}
+
+.lite {
+  width: 120px;
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #1a0606;
+  border-radius: 12px;
+
+}
+
+.hard {
+  border-radius: 12px;
+  width: 120px;
+  margin: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #1a0606;
+}
+
+.bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.start {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #1a0606;
+  border-radius: 12px;
+
+}
 
 #game-board {
   position: relative;
@@ -16,6 +101,7 @@ body {
 }
 
 .icon {
+  display: none;
   position: absolute;
   width: 50px;
   height: 50px;
@@ -27,7 +113,73 @@ body {
   font-size: 18px;
   color: #fff;
   border-radius: 50%;
+  transition: 2s;
 }
+
+.result1 {
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ea7474;
+  border-radius: 5px;
+
+  button {
+    display: none;
+
+    background-color: #ea7474;
+    border-radius: 5px;
+  }
+
+}
+
+.result2 {
+  display: none;
+  /*display: flex;*/
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ea7474;
+  border-radius: 5px;
+
+  button {
+
+    background-color: #ea7474;
+    border-radius: 5px;
+  }
+}
+
+.result3 {
+  display: none;
+  /*display: flex;*/
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ea7474;
+  border-radius: 5px;
+
+  button {
+
+    background-color: #ea7474;
+    border-radius: 5px;
+  }
+}
+
 
 #result {
   display: none;
@@ -56,6 +208,7 @@ body {
 }
 
 #difficulty-select {
+  display: none;
   text-align: center;
   margin-bottom: 20px;
 }
@@ -67,17 +220,44 @@ body {
   cursor: pointer;
 }
 
-/* Стили для движения иконок в сложном уровне */
-.icon.move-icon {
-  animation: moveAnimation 8s steps(40) infinite;
+.icon.hide-icon {
+  animation: hideAnimation 0.5s linear;
+  animation-fill-mode: forwards;
 }
 
-@keyframes moveAnimation {
+.icon::after {
+  content: attr(data-after);
+  position: absolute;
+  top: -30px;
+  color: black;
+  font-size: 24px;
+  width: 100px;
+  background-color: red;
+  text-align: center;
+}
+
+@keyframes hideAnimation {
   0% {
-    transform: translate(0, 0);
+    transform: rotate(0) scale(1);
   }
 
   100% {
-    transform: translate(200px, 0);
+    transform: rotate(180deg) scale(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .top {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .change {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 }
