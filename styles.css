@@ -108,6 +108,7 @@ h1{
   font-size: 18px;
   color: #fff;
   border-radius: 50%;
+  transition:2s;
 }
 
 .result1 {
@@ -215,9 +216,33 @@ h1{
   cursor: pointer;
 }
 
+.icon.hide-icon {
+  animation: hideAnimation 0.5s linear ;
+  animation-fill-mode: forwards;
+}
+.icon::after{
+  content: attr(data-after);
+  position: absolute;
+  top:-30px;
+  color:black;
+  font-size: 24px;
+  width:100px;
+  background-color: red;
+  text-align: center;
+}
+@keyframes hideAnimation{
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  100% {
+    transform: rotate(180deg) scale(0);
+  }
+}
+
 /* Стили для движения иконок в сложном уровне */
-.icon.move-icon {
-  animation: moveAnimation 8s steps(40) infinite;
+/* .icon.move-icon {
+  animation: moveAnimation 3s steps(40) infinite;
+  
 }
 
 @keyframes moveAnimation {
@@ -226,7 +251,7 @@ h1{
   }
 
   100% {
-    transform: translate(200px, 0);
+    transform: translate(200px, 200px);
   }
 }
 
@@ -245,4 +270,6 @@ h1{
   align-items: center;
 }
 }
+
+
 
