@@ -1,9 +1,3 @@
-if (window.screen.orientation) {
-      screen.orientation.lock('landscape');
-    }
-
-
-
 const icons = [
   { id: 1, name: 'Icon 1', imgUrl: 'path/to/icon1.png' },
   { id: 2, name: 'Icon 2', imgUrl: 'path/to/icon2.png' },
