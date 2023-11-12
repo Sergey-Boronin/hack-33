@@ -17,6 +17,7 @@ const menu = document.querySelector(".menu");
 const game = document.querySelector(".board")
 const resultElement = document.getElementById('result');
 const backButton = document.querySelector('#back-button');
+const title = document.querySelector('.main-title')
 
 let score = 0;
 let timer;
@@ -26,7 +27,7 @@ let misses = false;
 let notime = false;
 let count_misses = 0;
 let randomIndex = 0;
-let difficultyGlobal
+let difficultyGlobal;
 
 checkbox_misses.addEventListener("change", ()=>{
   misses = checkbox_misses.checked; 
@@ -54,6 +55,7 @@ function startGame(difficulty) {
   difficultyGlobal = difficulty;
   resultElement.style.display = "none"
   menu.style.display = "none";
+  title.style.display = "none"
   game.style.display = "block";
   gameBoard.classList.remove('blured'); 
   score = 0;
