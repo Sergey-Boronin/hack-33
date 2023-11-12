@@ -5,12 +5,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
-  <main class="main">
+  <main class="main-container">
     <section class="menu"></section>
-    <section class="board"></section>
+    <section class="board">
+      <div id="difficulty-select">
+        <button onclick="startGame(1)">Легкий уровень</button>
+        <button onclick="startGame(2)">Сложный уровень</button>
+
+        <br/>
+        <label>Без времени <input class="checkbox_notimer" type="checkbox" /></label>
+
+        <br/>
+        <label>До 3-х промахов <input class="checkbox_misses" type="checkbox" /></label>
+      </div>
+      <div id="game-board"></div>
+      <div id="result"></div>
+      <div id="timer-container">
+        <div id="timer">Время: 10</div>
+        <div id="score">Очки: 0</div>
+      </div>
+    </section>
     <section class="result"></section>
   </main>
   <script src="./scripts.js"></script>
