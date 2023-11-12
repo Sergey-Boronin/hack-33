@@ -87,8 +87,8 @@ function showNextIcon(difficulty) {
   // iconElement.innerText = icon.name;
   
 
-  iconElement.style.left = Math.random() * (gameBoard.clientWidth - 50) + 'px';
-  iconElement.style.top = Math.random() * (gameBoard.clientHeight - 50) + 'px';
+  iconElement.style.left = Math.random() * (gameBoard.clientWidth -160) + 'px';
+  iconElement.style.top = Math.random() * (gameBoard.clientHeight -160) + 'px';
   
   let animation_timer;
   
