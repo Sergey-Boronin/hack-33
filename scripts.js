@@ -1,12 +1,12 @@
 const icons = [
-  { id: 1, name: 'loneliness', imgUrl: '/img/loneliness.png'},
-  { id: 2, name: 'fist', imgUrl: '/img/fist.jpg'},
-  { id: 3, name: 'application', imgUrl: '/img/application.jpg'},
-  { id: 4, name: 'doc', imgUrl: '/img/doc.jpg'},
-  { id: 5, name: 'newplaces', imgUrl: '/img/newplaces.jpg'},
-  { id: 6, name: 'woman_walks', imgUrl: '/img/woman_walks_out_the_door.jpg'},
-  { id: 7, name: 'dark', imgUrl: '/img/darkness.jpg'},
-  { id: 8, name: 'alone', imgUrl: '/img/alone.png'},
+  { id: 1, name: 'Одиночество', imgUrl: 'img/loneliness.png'},
+  { id: 2, name: 'Насилие', imgUrl: 'img/fist.jpg'},
+  { id: 3, name: 'Отказ от ребенка', imgUrl: 'img/application.jpg'},
+  { id: 4, name: 'Органы опеки отберут', imgUrl: 'img/doc.jpg'},
+  { id: 5, name: 'Новые места', imgUrl: 'img/newplaces.jpg'},
+  { id: 6, name: 'Мама исчезнет', imgUrl: 'img/woman_walks_out_the_door.jpg'},
+  { id: 7, name: 'Темнота', imgUrl: 'img/darkness.jpg'},
+  { id: 8, name: 'Предательство', imgUrl: 'img/alone.png'},
   //{ id: 9, name: 'Icon 9', imgUrl: 'path/to/icon9.png' },
   //{ id: 10, name: 'Icon 10', imgUrl: 'path/to/icon10.png' },
 ];
@@ -80,9 +80,9 @@ function showNextIcon(difficulty) {
   randomIndex = Math.floor(Math.random() * icons.length);
   const icon = icons[randomIndex];
 
-  let iconElement = document.createElement('img');
+  let iconElement = document.createElement('div');
   iconElement.classList.add('icon');
-  iconElement.src = icon.imgUrl;
+  iconElement.style.backgroundImage = "url("+icon.imgUrl+")";
   gameBoard.appendChild(iconElement);
   // iconElement.innerText = icon.name;
   
@@ -101,7 +101,7 @@ function showNextIcon(difficulty) {
     iconElement.style.display = 'none';
     showNextIcon(difficulty);
     clearTimeout(animation_timer);
-  }, 3000);
+  }, 3500);
 
   iconElement.addEventListener('click', (e) => {
       e.stopPropagation();
