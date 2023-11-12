@@ -68,6 +68,7 @@ function startGame(difficulty) {
         updateTimer();
         if (gameTime <= 0) {
             endGame();
+            clearTimeout(hide_elem);
         }
     }, 1000);
   }
@@ -130,12 +131,12 @@ function moveIcon(icon) {
 
 function endGame() {
   clearInterval(timer);
-
+ 
 
   resultElement.innerHTML = `<p>Ваш счет: ${score}</p>`;
 
   if (score > 30) {
-      resultElement.innerHTML += '<p>Поздравляем! Вы набрали больше 10 очков!</p> <button onclick="startGame(difficultyGlobal)">Начать заново</button>';
+      resultElement.innerHTML += '<p>Поздравляем! Вы набрали больше 30 очков!</p> <button onclick="startGame(difficultyGlobal)">Начать заново</button>';
   } else {
       resultElement.innerHTML += '<p>Попробуйте еще раз!</p><button onclick="startGame(difficultyGlobal)">Начать заново</button>';
   }
