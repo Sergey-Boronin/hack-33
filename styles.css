@@ -7,50 +7,51 @@ body {
   background-color: #f0f0f0;
 }
 
-.menu{
-  background-color: rgb(249, 234, 220) ;
+.menu {
+  background-color: rgb(249, 234, 220);
   padding: 10px;
 }
 
-.top{
+.top {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-p{
+p {
   text-align: center;
   margin: 10px;
 }
 
-.fear{
+.fear {
   display: flex;
   flex-direction: column;
   margin: 10px;
-  
+
 }
 
-img{
+img {
   width: 30px;
 }
-h1{
+
+h1 {
   text-align: center;
   color: rgb(34, 29, 27);
 }
 
-.change{
+.change {
   display: flex;
   justify-content: space-around;
 }
 
-.level{
+.level {
   padding: 30px;
   display: flex;
   justify-content: center;
-  
-}  
 
-.lite{
+}
+
+.lite {
   width: 120px;
   margin: 5px;
   padding: 10px;
@@ -62,7 +63,7 @@ h1{
 
 }
 
-.hard{
+.hard {
   border-radius: 12px;
   width: 120px;
   margin: 5px;
@@ -73,11 +74,12 @@ h1{
   border: 2px solid #1a0606;
 }
 
-.bottom{
+.bottom {
   display: flex;
   justify-content: center;
 }
-.start{
+
+.start {
   padding: 10px;
   font-size: 16px;
   cursor: pointer;
@@ -108,7 +110,7 @@ h1{
   font-size: 18px;
   color: #fff;
   border-radius: 50%;
-  transition:2s;
+  transition: 2s;
 }
 
 .result1 {
@@ -125,16 +127,17 @@ h1{
   background-color: #fff;
   border: 1px solid #ea7474;
   border-radius: 5px;
-  button{
+
+  button {
     display: none;
 
     background-color: #ea7474;
     border-radius: 5px;
   }
-  
+
 }
 
-.result2{
+.result2 {
   display: none;
   /*display: flex;*/
   align-items: center;
@@ -147,14 +150,15 @@ h1{
   background-color: #fff;
   border: 1px solid #ea7474;
   border-radius: 5px;
-  button{
-    
+
+  button {
+
     background-color: #ea7474;
     border-radius: 5px;
   }
 }
 
-.result3{
+.result3 {
   display: none;
   /*display: flex;*/
   align-items: center;
@@ -167,8 +171,9 @@ h1{
   background-color: #fff;
   border: 1px solid #ea7474;
   border-radius: 5px;
-  button{
-    
+
+  button {
+
     background-color: #ea7474;
     border-radius: 5px;
   }
@@ -217,59 +222,43 @@ h1{
 }
 
 .icon.hide-icon {
-  animation: hideAnimation 0.5s linear ;
+  animation: hideAnimation 0.5s linear;
   animation-fill-mode: forwards;
 }
-.icon::after{
+
+.icon::after {
   content: attr(data-after);
   position: absolute;
-  top:-30px;
-  color:black;
+  top: -30px;
+  color: black;
   font-size: 24px;
-  width:100px;
+  width: 100px;
   background-color: red;
   text-align: center;
 }
-@keyframes hideAnimation{
+
+@keyframes hideAnimation {
   0% {
     transform: rotate(0) scale(1);
   }
+
   100% {
     transform: rotate(180deg) scale(0);
   }
 }
 
-/* Стили для движения иконок в сложном уровне */
-/* .icon.move-icon {
-  animation: moveAnimation 3s steps(40) infinite;
-  
-}
-
-@keyframes moveAnimation {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  100% {
-    transform: translate(200px, 200px);
-  }
-}
-
-
 @media (max-width: 767px) {
- .top{
+  .top {
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
-  } 
-.change{
-  flex-direction: column;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  }
+
+  .change {
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 }
-}
-
-
-
