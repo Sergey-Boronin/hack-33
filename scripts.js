@@ -1,3 +1,15 @@
+if (window.screen.orientation) {
+  // Альбомная ориентация
+  function setLandscapeOrientation() {
+    if (screen.orientation.lock) {
+      screen.orientation.lock('landscape');
+    }
+  }
+
+  // Вызываем функцию для установки альбомной ориентации при загрузке страницы
+  setLandscapeOrientation();
+}
+
 const icons = [
   { id: 1, name: 'Icon 1', imgUrl: 'path/to/icon1.png' },
   { id: 2, name: 'Icon 2', imgUrl: 'path/to/icon2.png' },
