@@ -16,6 +16,7 @@ const timer_elem = document.getElementById('timer');
 const menu = document.querySelector(".menu");
 const game = document.querySelector(".board")
 const resultElement = document.getElementById('result');
+const backButton = document.querySelector('#back-button');
 
 let score = 0;
 let timer;
@@ -54,6 +55,7 @@ function startGame(difficulty) {
   resultElement.style.display = "none"
   menu.style.display = "none";
   game.style.display = "block";
+  gameBoard.classList.remove('blured'); 
   score = 0;
   gameTime = 10;
   isIconClicked = false;
@@ -130,6 +132,7 @@ function endGame() {
   }
 
   resultElement.style.display = 'block';
+  gameBoard.classList.add('blured'); 
 }
 
 function updateTimer() {
@@ -139,3 +142,7 @@ function updateTimer() {
 function updateScore() {
   document.getElementById('score').innerText = `Очки: ${score}`;
 }
+
+backButton.addEventListener('click', () => {
+  window.location.href = window.location.href;
+})
