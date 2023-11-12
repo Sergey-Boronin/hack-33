@@ -12,7 +12,6 @@ body {
 }
 
 .menu {
-  
   padding: 10px;
   border-radius: 5px;
   box-shadow: 0 0 10px 5px rgba(71, 69, 69, 0.6);
@@ -40,9 +39,16 @@ p {
   display: flex;
   flex-direction: column;
   margin: 10px;
+  gap: 4px;
+
 
 }
-
+.img{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
 img {
   width: 30px;
 }
@@ -107,6 +113,14 @@ h1 {
 .board {
   height: 100vh;
   width: 100vw;
+}
+.back{
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #3498db;
+  border: 2px solid #1a0606;
+  border-radius: 12px;
 }
 
 #game-board {
@@ -175,6 +189,18 @@ h1 {
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.6);
 }
 
+#back-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 18px;
+  z-index: 100;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
 #timer,
 #score {
   margin-bottom: 10px;
@@ -204,10 +230,10 @@ h1 {
   top: -30px;
   color: black;
   font-size: 34px;
-  background-color:#3498db;
-  
+  background-color: #3498db;
+
   text-align: center;
-    
+
 }
 
 @keyframes hideAnimation {
@@ -234,4 +260,9 @@ h1 {
     justify-content: space-around;
     align-items: center;
   }
+}
+
+.blured {
+  filter: blur(4px);
+  transition: 2s ease;
 }
