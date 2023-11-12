@@ -6,56 +6,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./styles.css">
-  
+
 </head>
 
 <body>
   <main class="main-container">
     <section class="menu">
-      <div class="top">
+      <div class="left">
         <div class="fear">
-          <div><img src="C:\Users\Vitaliy\hack-33\img\betrayal.svg"> - Предательство</div>
-          <div>2 - Насилиe</div>
-          <divi>3 - Одиночество</divi>
-          <li>4 - Темнота</li>
-          <li>5 - Новые места</li>
-          <li>6 - Непривычное, что подрывает ожидания</li>
-          <li>7 - Боязнь быть осмеянным</li>
-          <li>8 - боязнь выделяться</li>
-          <li>9 - Взрослые люди</li>
-          <li>10 - Боязнь, что мама исчезнет </li>
-          <li>11 - Боязнь, что органы опеки отберут</li>
-          <li>12 - Врачи</li>
-        </div>
-
+          <div class="img"><img src="/img/loneliness.png">  Предательство</div>
+          <div class="img"><img src="/img/fist.jpg">  Насилиe</div>
+          <div class="img"><img src="/img/alone.png">  Одиночество</div>
+          <div class="img"><img src="/img/darkness.jpg">  Темнота</div>
+          <div class="img"><img src="/img/newplaces.jpg">  Новые места</div>
+          <div class="img"><img src="/img/woman_walks_out_the_door.jpg">  Уход мамы</div>
+          <div class="img"><img src="/img/application.jpg"> Заберут органы опеки</div>
+          <div class="img"><img src="/img/doc.jpg">  Боязнь врачей</div>
+        </div> 
+      </div>
+      <div class="right">
         <p>
-            Правила игры.<br>
-          Выбрать уровень игры.<br>
+
+          Правила игры: <br>
+          Выбери уровень игры.<br>
+          Или выбери дополнительные опции и затем, выбери уровень игры.<br>
           Наводи мышку на страхи - порази их щелкая левой кнопкой мышки.
         </p>
       </div>
-      
+
       <h1>Выбери сложность</h1>
 
       <div class="change">
         <button onclick="startGame(1)" class="lite">Легкий уровень</button>
         <button onclick="startGame(2)" class="hard">Сложный уровень</button>
       </div>
+
       
       <div class="level">
-          <label>Без времени <input class="checkbox_notimer" type="checkbox" /></label>
+          <label>Без времени <input class="checkbox_notimer" type="checkbox"/></label>
 
           <br/>
-          <label>До 3-х промахов <input class="checkbox_misses" type="checkbox" /></label>
-      </div>
-
-      <div class="bottom">
-        <button class="start">Начало игры</button>
+          <label style="margin-left: 15px;">До 3-х промахов <input class="checkbox_misses" type="checkbox" /></label>
       </div>
       
     </section>
 
     <section class="board">
+      <button id="back-button">
+        Назад в меню
+      </button>
       <div id="game-board"></div>
       <div id="result">
         <button>Начать заново</button>

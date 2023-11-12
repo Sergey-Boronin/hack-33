@@ -1,14 +1,12 @@
 const icons = [
-  { id: 1, name: 'loneliness', imgUrl: '/img/loneliness.png'},
-  { id: 2, name: 'fist', imgUrl: '/img/fist.jpg'},
-  { id: 3, name: 'application', imgUrl: '/img/application.jpg'},
-  { id: 4, name: 'doc', imgUrl: '/img/doc.jpg'},
-  { id: 5, name: 'newplaces', imgUrl: '/img/newplaces.jpg'},
-  { id: 6, name: 'woman_walks', imgUrl: '/img/woman_walks_out_the_door.jpg'},
-  { id: 7, name: 'dark', imgUrl: '/img/darkness.jpg'},
-  { id: 8, name: 'alone', imgUrl: '/img/alone.png'},
-  //{ id: 9, name: 'Icon 9', imgUrl: 'path/to/icon9.png' },
-  //{ id: 10, name: 'Icon 10', imgUrl: 'path/to/icon10.png' },
+  { id: 1, name: 'Одиночество', imgUrl: 'img/loneliness.png'},
+  { id: 2, name: 'Насилие', imgUrl: 'img/fist.jpg'},
+  { id: 3, name: 'Отказ от ребенка', imgUrl: 'img/application.jpg'},
+  { id: 4, name: 'Органы опеки отберут', imgUrl: 'img/doc.jpg'},
+  { id: 5, name: 'Новые места', imgUrl: 'img/newplaces.jpg'},
+  { id: 6, name: 'Мама исчезнет', imgUrl: 'img/woman_walks_out_the_door.jpg'},
+  { id: 7, name: 'Темнота', imgUrl: 'img/darkness.jpg'},
+  { id: 8, name: 'Предательство', imgUrl: 'img/alone.png'},
 ];
 
 const checkbox_notimer = document.querySelector(".checkbox_notimer");
@@ -18,6 +16,7 @@ const timer_elem = document.getElementById('timer');
 const menu = document.querySelector(".menu");
 const game = document.querySelector(".board")
 const resultElement = document.getElementById('result');
+const backButton = document.querySelector('#back-button');
 
 let score = 0;
 let timer;
@@ -46,7 +45,6 @@ gameBoard.addEventListener("click", function(){
     if(misses){
       count_misses++;
     }
-
     if(count_misses == 3){
       endGame();
     }
@@ -57,6 +55,7 @@ function startGame(difficulty) {
   resultElement.style.display = "none"
   menu.style.display = "none";
   game.style.display = "block";
+  gameBoard.classList.remove('blured'); 
   score = 0;
   gameTime = 10;
   isIconClicked = false;
@@ -68,27 +67,23 @@ function startGame(difficulty) {
         updateTimer();
         if (gameTime <= 0) {
             endGame();
+            clearTimeout(hide_elem);
         }
     }, 1000);
   }
 }
 
 function showNextIcon(difficulty) {
-  
   gameBoard.innerHTML = '';
-
   randomIndex = Math.floor(Math.random() * icons.length);
   const icon = icons[randomIndex];
-
-  let iconElement = document.createElement('img');
+  let iconElement = document.createElement('div');
   iconElement.classList.add('icon');
-  iconElement.src = icon.imgUrl;
+  iconElement.style.backgroundImage = "url("+icon.imgUrl+")";
   gameBoard.appendChild(iconElement);
-  // iconElement.innerText = icon.name;
-  
 
-  iconElement.style.left = Math.random() * (gameBoard.clientWidth - 50) + 'px';
-  iconElement.style.top = Math.random() * (gameBoard.clientHeight - 50) + 'px';
+  iconElement.style.left = Math.random() * (gameBoard.clientWidth -160) + 'px';
+  iconElement.style.top = Math.random() * (gameBoard.clientHeight -160) + 'px';
   
   let animation_timer;
   
@@ -99,14 +94,15 @@ function showNextIcon(difficulty) {
 
   let hide_elem = setTimeout(() => {
     iconElement.style.display = 'none';
-    showNextIcon(difficulty);
+    if (gameTime != 0) {
+      showNextIcon(difficulty);
+  }
     clearTimeout(animation_timer);
-  }, 3000);
+  }, 3500);
 
   iconElement.addEventListener('click', (e) => {
       e.stopPropagation();
       score += 5;
-      //iconElement.style.display = 'none'; 
       clearTimeout(hide_elem);
       clearTimeout(animation_timer);
       iconElement.classList.add('hide-icon');
@@ -114,7 +110,6 @@ function showNextIcon(difficulty) {
       setTimeout(()=>showNextIcon(difficulty), 500)
       updateScore();
   });
-
 }
 
 function moveIcon(icon) {
@@ -123,24 +118,22 @@ function moveIcon(icon) {
   const maxY = gameBoard.clientHeight - 50;
   const x = Math.random() * maxX;
   const y = Math.random() * maxY;
-
   icon.style.left = x + 'px';
   icon.style.top = y + 'px';
 }
 
 function endGame() {
   clearInterval(timer);
-
-
   resultElement.innerHTML = `<p>Ваш счет: ${score}</p>`;
 
   if (score > 30) {
-      resultElement.innerHTML += '<p>Поздравляем! Вы набрали больше 10 очков!</p> <button onclick="startGame(difficultyGlobal)">Начать заново</button>';
+      resultElement.innerHTML += '<p>Поздравляем! Вы набрали больше 30 очков!</p> <button onclick="startGame(difficultyGlobal)">Начать заново</button>';
   } else {
       resultElement.innerHTML += '<p>Попробуйте еще раз!</p><button onclick="startGame(difficultyGlobal)">Начать заново</button>';
   }
 
   resultElement.style.display = 'block';
+  gameBoard.classList.add('blured'); 
 }
 
 function updateTimer() {
@@ -151,9 +144,6 @@ function updateScore() {
   document.getElementById('score').innerText = `Очки: ${score}`;
 }
 
-
-//задачи
-
-//disable checkbox 
-//выходит анимация за пределы блока +
-//в разные стороны менялось движение +
+backButton.addEventListener('click', () => {
+  window.location.href = window.location.href;
+})
