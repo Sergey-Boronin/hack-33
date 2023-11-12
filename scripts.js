@@ -80,11 +80,11 @@ function showNextIcon(difficulty) {
   randomIndex = Math.floor(Math.random() * icons.length);
   const icon = icons[randomIndex];
 
-
-  let iconElement = document.createElement('div');
+  let iconElement = document.createElement('img');
   iconElement.classList.add('icon');
+  iconElement.src = icon.imgUrl;
   gameBoard.appendChild(iconElement);
-  iconElement.innerText = icon.name;
+  // iconElement.innerText = icon.name;
   
 
   iconElement.style.left = Math.random() * (gameBoard.clientWidth - 50) + 'px';
