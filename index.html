@@ -38,13 +38,15 @@
       <h1>Выбери сложность</h1>
 
       <div class="change">
-        <button class="lite">Легкий уровень</button>
-        <button class="hard">Сложный уровень</button>
+        <button onclick="startGame(1)" class="lite">Легкий уровень</button>
+        <button onclick="startGame(2)" class="hard">Сложный уровень</button>
       </div>
       
       <div class="level">
-        <input type="checkbox" checked ><label>До 3 промахов</label>
-        <input type="checkbox"><label>Без таймера</label>
+          <label>Без времени <input class="checkbox_notimer" type="checkbox" /></label>
+
+          <br/>
+          <label>До 3-х промахов <input class="checkbox_misses" type="checkbox" /></label>
       </div>
 
       <div class="bottom">
@@ -54,44 +56,14 @@
     </section>
 
     <section class="board">
-      <div id="difficulty-select">
-        <button onclick="startGame(1)">Легкий уровень</button>
-        <button onclick="startGame(2)">Сложный уровень</button>
-
-        <br/>
-        <label>Без времени <input class="checkbox_notimer" type="checkbox" /></label>
-
-        <br/>
-        <label>До 3-х промахов <input class="checkbox_misses" type="checkbox" /></label>
-      </div>
       <div id="game-board"></div>
-      <div id="result"></div>
+      <div id="result">
+        <button>Начать заново</button>
+      </div>
       <div id="timer-container">
         <div id="timer">Время: 10</div>
         <div id="score">Очки: 0</div>
       </div>
-    </section>
-
-    <section class="result">
-
-      <div class="result1">
-        <p>В следующий раз обязательно справишься!<br> Мы в тебя верим!</p>
-        <button>Играй еще!</button>
-
-      </div>
-
-      <div class="result2">
-        <p>Ты можешь лучше!<br> Попробуй еще!</p>
-        <button>Играй еще!</button>
-
-      </div>
-
-      <div class="result3">
-        <p>Ты справился!<br> Молодец!</p>
-        <button>Играй еще!</button>
-
-      </div>
-
     </section>
   </main>
   <script src="./scripts.js"></script>

@@ -15,6 +15,9 @@ const checkbox_notimer = document.querySelector(".checkbox_notimer");
 const checkbox_misses = document.querySelector(".checkbox_misses");
 const gameBoard = document.getElementById('game-board');
 const timer_elem = document.getElementById('timer');
+const menu = document.querySelector(".menu");
+const game = document.querySelector(".board")
+const resultElement = document.getElementById('result');
 
 let score = 0;
 let timer;
@@ -24,6 +27,7 @@ let misses = false;
 let notime = false;
 let count_misses = 0;
 let randomIndex = 0;
+let difficultyGlobal
 
 checkbox_misses.addEventListener("change", ()=>{
   misses = checkbox_misses.checked; 
@@ -49,6 +53,10 @@ gameBoard.addEventListener("click", function(){
 })
 
 function startGame(difficulty) {
+  difficultyGlobal = difficulty;
+  resultElement.style.display = "none"
+  menu.style.display = "none";
+  game.style.display = "block";
   score = 0;
   gameTime = 10;
   isIconClicked = false;
@@ -121,13 +129,13 @@ function moveIcon(icon) {
 function endGame() {
   clearInterval(timer);
 
-  const resultElement = document.getElementById('result');
+
   resultElement.innerHTML = `<p>Ваш счет: ${score}</p>`;
 
   if (score > 30) {
-      resultElement.innerHTML += '<p>Поздравляем! Вы набрали больше 10 очков!</p>';
+      resultElement.innerHTML += '<p>Поздравляем! Вы набрали больше 10 очков!</p> <button onclick="startGame(difficultyGlobal)">Начать заново</button>';
   } else {
-      resultElement.innerHTML += '<p>Попробуйте еще раз!</p>';
+      resultElement.innerHTML += '<p>Попробуйте еще раз!</p><button onclick="startGame(difficultyGlobal)">Начать заново</button>';
   }
 
   resultElement.style.display = 'block';
