@@ -23,6 +23,7 @@ let isIconClicked = false;
 let misses = false;
 let notime = false;
 let count_misses = 0;
+let randomIndex = 0;
 
 checkbox_misses.addEventListener("change", ()=>{
   misses = checkbox_misses.checked; 
@@ -35,7 +36,6 @@ checkbox_notimer.addEventListener("change", ()=>{
   }else{
     timer_elem.style.display = "block";
   }
-  
 })
 
 gameBoard.addEventListener("click", function(){
@@ -63,22 +63,20 @@ function startGame(difficulty) {
         }
     }, 1000);
   }
-
-  
 }
 
 function showNextIcon(difficulty) {
   
   gameBoard.innerHTML = '';
 
-  const randomIndex = Math.floor(Math.random() * icons.length);
+  randomIndex = Math.floor(Math.random() * icons.length);
   const icon = icons[randomIndex];
 
   let iconElement = document.createElement('div');
   iconElement.classList.add('icon');
   gameBoard.appendChild(iconElement);
   iconElement.innerText = icon.name;
-
+  
   iconElement.style.left = Math.random() * (gameBoard.clientWidth - 50) + 'px';
   iconElement.style.top = Math.random() * (gameBoard.clientHeight - 50) + 'px';
   
@@ -98,10 +96,12 @@ function showNextIcon(difficulty) {
   iconElement.addEventListener('click', (e) => {
       e.stopPropagation();
       score += 5;
-      iconElement.style.display = 'none'; 
+      //iconElement.style.display = 'none'; 
       clearTimeout(hide_elem);
       clearTimeout(animation_timer);
-      showNextIcon(difficulty);
+      iconElement.classList.add('hide-icon');
+      iconElement.setAttribute("data-after", icons[randomIndex].name);
+      setTimeout(()=>showNextIcon(difficulty), 500)
       updateScore();
   });
 
