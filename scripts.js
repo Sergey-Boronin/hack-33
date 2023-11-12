@@ -71,7 +71,6 @@ function startGame(difficulty) {
 }
 
 function showNextIcon(difficulty) {
-  console.log('object');
   gameBoard.innerHTML = '';
   randomIndex = Math.floor(Math.random() * icons.length);
   const icon = icons[randomIndex];
@@ -95,7 +94,6 @@ function showNextIcon(difficulty) {
     if (gameTime != 0) {
       showNextIcon(difficulty);
   }
-    // showNextIcon(difficulty);
     clearTimeout(animation_timer);
   }, 3500);
 
