@@ -6,11 +6,53 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./styles.css">
+  
 </head>
 
 <body>
   <main class="main-container">
-    <section class="menu"></section>
+    <section class="menu">
+      <div class="top">
+        <div class="fear">
+          <div><img src="C:\Users\Vitaliy\hack-33\img\betrayal.svg"> - Предательство</div>
+          <div>2 - Насилиe</div>
+          <divi>3 - Одиночество</divi>
+          <li>4 - Темнота</li>
+          <li>5 - Новые места</li>
+          <li>6 - Непривычное, что подрывает ожидания</li>
+          <li>7 - Боязнь быть осмеянным</li>
+          <li>8 - боязнь выделяться</li>
+          <li>9 - Взрослые люди</li>
+          <li>10 - Боязнь, что мама исчезнет </li>
+          <li>11 - Боязнь, что органы опеки отберут</li>
+          <li>12 - Врачи</li>
+        </div>
+
+        <p>
+            Правила игры.<br>
+          Выбрать уровень игры.<br>
+          Наводи мышку на страхи - порази их щелкая левой кнопкой мышки.
+        </p>
+      </div>
+      
+      <h1>Выбери сложность</h1>
+
+      <div class="change">
+        <button class="lite">Легкий уровень</button>
+        <button class="hard">Сложный уровень</button>
+      </div>
+      
+      <div class="level">
+        <input type="checkbox" checked ><label>До 3 промахов</label>
+        <input type="checkbox"><label>Без таймера</label>
+      </div>
+
+      <div class="bottom">
+        <button class="start">Начало игры</button>
+      </div>
+      
+    </section>
+
     <section class="board">
       <div id="difficulty-select">
         <button onclick="startGame(1)">Легкий уровень</button>
@@ -23,7 +65,28 @@
         <div id="score">Очки: 0</div>
       </div>
     </section>
-    <section class="result"></section>
+
+    <section class="result">
+
+      <div class="result1">
+        <p>В следующий раз обязательно справишься!<br> Мы в тебя верим!</p>
+        <button>Играй еще!</button>
+
+      </div>
+
+      <div class="result2">
+        <p>Ты можешь лучше!<br> Попробуй еще!</p>
+        <button>Играй еще!</button>
+
+      </div>
+
+      <div class="result3">
+        <p>Ты справился!<br> Молодец!</p>
+        <button>Играй еще!</button>
+
+      </div>
+
+    </section>
   </main>
   <script src="./scripts.js"></script>
 </body>
