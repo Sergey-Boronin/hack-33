@@ -10,6 +10,7 @@ body {
 .menu {
   background-color: rgb(249, 234, 220);
   padding: 10px;
+  max-width: 1000px;
 }
 
 .board {
@@ -31,11 +32,15 @@ p {
   display: flex;
   flex-direction: column;
   margin: 10px;
+  gap: 4px;
+
 
 }
 .img{
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  
 }
 img {
   width: 30px;
